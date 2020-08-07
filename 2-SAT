@@ -1,0 +1,18 @@
+Let's look at the example in 2-CNF form:
+(a∨¬b)∧(¬a∨b)∧(¬a∨¬b)∧(a∨¬c)
+
+The oriented graph will contain the following vertices and edges:
+¬a⇒¬b
+b⇒a
+a⇒b
+¬b⇒¬a
+a⇒¬b
+b⇒¬a
+¬a⇒¬c
+c⇒a
+
+In order for this 2-SAT problem to have a solution, it is necessary and sufficient that for any variable x  the vertices x and ¬x are in different strongly connected components of the strong connection of the implication graph.
+
+Note that, in spite of the fact that the solution exists, it can happen that ¬x is reachable from x in the implication graph, or that (but not simultaneously) x is reachable from ¬x. In that case the choice of either true or false for x will lead to a contradiction, while the choice of the other one will not. Let's learn how to choose a value, such that we don't generate a contradiction.
+
+Let us sort the strongly connected components in topological order (i.e. comp[v]≤comp[u] if there is a path from v to u) and let comp[v] denote the index of strongly connected component to which the vertex v belongs. Then, if comp[x]<comp[¬x] we assign x with false and true otherwise.

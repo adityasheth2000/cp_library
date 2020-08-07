@@ -1,0 +1,32 @@
+Minimum vertex cover: A vertex cover in a graph is a set of vertices that includes at least one endpoint of every edge, and a vertex cover is minimum if no other vertex cover has fewer vertices.
+
+Maximum independent set: MIS is set of vertices such that no two nodes x,y in the set have an edge between them.
+
+Maximum clique problem: Max clique is set of vertices such that for every x,y in the set, there is an edge between them.
+
+If we have solution to MIS, we have solution to max clique problem: Just take complement of graph and run the algo and it gets us the required set of vertices. Same way we can solve MIS if we have soln to max clique problem.
+
+If S is vertex cover, then V\S is independent set. therefore, (minimum vertex cover+ maximum independent set)= |V| of a particular graph.
+
+A matching in a graph is a set of edges no two of which share an endpoint, and a matching is maximum if no other matching has more edges.
+
+Konig's theorem states that: 
+In any bipartite graph, the number of edges in a maximum matching equals the number of vertices in a minimum vertex cover.
+
+How to construct the minimum vertex cover set:
+1) Find the max_matching of the bipartite graph.
+2) let Z be the set of non matched vertices in L(left partition). Now add to Z all vertices reachable by some vertex from Z via an alternating path. A path 	 is called alternating if it alternates between edges from the matching and edges which are not in the matching.	
+	our required minimum vertex cover is set S: 
+	S=(L∖Z)∪(R∩Z).
+	
+
+Largest independent set of any graph: In graph theory, an independent set, stable set, coclique or anticlique is a set of vertices in a graph, no two of which are adjacent. That is, it is a set {\displaystyle S}S of vertices such that for every two vertices in {\displaystyle S}S, there is no edge connecting the two.
+The complement of a vertex cover in any graph is an independent set, so a minimum vertex cover is complementary to a maximum independent set.
+
+The largest antichain in a DAG can be found by Dilwort's theorem along with Konig's theorem
+Link: https://en.wikipedia.org/wiki/Dilworth%27s_theorem
+Algorithm for finding largest antichain:
+1) Make two partitions A(1 to n) and B(1 to n).
+2) Make undirected edge from (a of A) to (b of B) iff a<b in DAG.
+3) Find the maximum matching m in the above bipartite graph.
+4) Largest antichain for above graph= n-m.                   

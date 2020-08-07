@@ -1,0 +1,162 @@
+    Idea is to compress two way connected components of an undirected connected graph into a tree. So all the set of nodes that have two or more ways to reach one from another is compressed to one node.
+
+Algorithm:
+1) Make a recursion function to create a directed graph:
+		
+		void construct_directed_graph(int node,int prev)
+		{
+		    //t(node);
+		    if(vis[node])
+		    {
+		        return;
+		    }
+		    vis[node]=1;
+		    for(auto &x: undirected[node])
+		    {
+		        if(x==prev)
+		        {
+		            continue;
+		        }
+		        adj[node].push_back(x);
+		        adjtranspose[x].push_back(node);
+		        construct_directed_graph(x,node);
+		    }
+		}
+2) This will create a directed graph. 
+3) we can compress all the components in this directed graph if they are Strongly connected components.
+Use condensation_of_directed_graph_using_SCC.cpp
+4) To get back tree, modify the code from condensation_of_directed_graph_using_SCC.cpp 
+
+Reference to code(IGNORE THE get_centre part):
+
+
+
+
+#include<bits/stdc++.h>
+typedef long long ll;
+
+#define t1(x)             cerr<<#x<<"="<<x<<endl
+#define t2(x, y)          cerr<<#x<<"="<<x<<" "<<#y<<"="<<y<<endl
+#define t3(x, y, z)       cerr<<#x<<"=" <<x<<" "<<#y<<"="<<y<<" "<<#z<<"="<<z<<endl
+#define t4(a,b,c,d)       cerr<<#a<<"="<<a<<" "<<#b<<"="<<b<<" "<<#c<<"="<<c<<" "<<#d<<"="<<d<<endl
+#define t5(a,b,c,d,e)     cerr<<#a<<"="<<a<<" "<<#b<<"="<<b<<" "<<#c<<"="<<c<<" "<<#d<<"="<<d<<" "<<#e<<"="<<e<<endl
+#define t6(a,b,c,d,e,f)   cerr<<#a<<"="<<a<<" "<<#b<<"="<<b<<" "<<#c<<"="<<c<<" "<<#d<<"="<<d<<" "<<#e<<"="<<e<<" "<<#f<<"="<<f<<endl
+#define GET_MACRO(_1,_2,_3,_4,_5,_6,NAME,...) NAME
+#define t(...) GET_MACRO(__VA_ARGS__,t6,t5, t4, t3, t2, t1)(__VA_ARGS__)
+#define M 1000000007
+#define endl "\n"
+#define rep(a,b,in) for(int i=a;i<b;i+=in)
+#define int long long 
+using namespace std;
+
+
+vector<vector<int>> adj;
+vector<vector<int>> adjtranspose;
+vector<bool> visited1;
+vector<bool> visited2;
+stack<int> st;
+vector<int> color;
+vector<vector<int>> SCC;
+
+
+void dfs1(int node)
+{
+	visited1[node]=true;
+	for(auto x: adj[node])
+	{
+		if(!visited1[x])
+		{
+			dfs1(x);
+		}
+	}
+	st.push(node);
+}
+void dfs2(int node,int c)
+{
+	visited2[node]=true;
+	color[node]=c;
+	for(auto x: adjtranspose[node])
+	{
+		if(!visited2[x])
+		{
+			dfs2(x,c);
+		}
+	}
+}
+const int N=3e5+100;
+vector<int> undirected[N];
+bool vis[N];
+
+void construct_directed_graph(int node,int prev)
+{
+    //t(node);
+    if(vis[node])
+    {
+        return;
+    }
+    vis[node]=1;
+    for(auto &x: undirected[node])
+    {
+        if(x==prev)
+        {
+            continue;
+        }
+        adj[node].push_back(x);
+        adjtranspose[x].push_back(node);
+        construct_directed_graph(x,node);
+    }
+}
+
+
+
+int32_t main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);    
+    int n;
+    cin>>n;
+    int m;
+    cin>>m;
+    adj.resize(n+1);
+    adjtranspose.resize(n+1);
+    visited1.resize(n+1,false);
+    visited2.resize(n+1,false);
+    color.resize(n+1);
+    for(int i=0;i<m;i++)
+    {
+    	int u,v;
+    	cin>>u>>v;
+        undirected[u].push_back(v);
+        undirected[v].push_back(u);
+    }
+    construct_directed_graph(1,0);
+    for(int i=1;i<=n;i++)
+    {
+    	if(!visited1[i])
+    	{
+    		dfs1(i);
+    	}
+    }
+    int c=1;
+   	while(!st.empty())
+   	{
+   		int x=st.top();
+   		st.pop();
+   		if(!visited2[x])
+   		{
+   			dfs2(x,c++);
+   		}
+   	}
+   	SCC.resize(c);
+   	for(int i=1;i<=n;i++)
+   	{
+   		for(auto x: adj[i])
+   		{
+   			if(color[i]!=color[x])
+   			{
+   				SCC[color[i]].push_back(color[x]);
+                SCC[color[x]].push_back(color[i]);// THis line is added for making undirected tree.
+                //printf("%lld %lld\n",i,x);
+   			}
+   		}
+   	}  	
+}

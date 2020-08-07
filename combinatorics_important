@@ -1,0 +1,15 @@
+1) n distinct objects in k distinct boxes: k^n.
+2) n distinct objects in k identical boxes: https://brilliant.org/wiki/distinct-objects-into-identical-bins/
+3) n identical objects in k distinct boxes: (n+k-1)C(k-1);
+
+4) n identical objects in k identical boxes giving atleast one to each of the box:
+	can be calculated by in O(n*k) dp using the following theorem:
+	The number of partitions of an integer nn into rr parts is the same as the number of partitions of nn for which the largest part is rr. Intuition is : think of it as histogram where x is upto r and taking the lowest row each time will reduce it by r forming smaller subproblem.	
+	Thereafter the dp relation becomes: dp[n][r]=summation(dp[n-r][k]) for k=1 to k=r
+	we can use prefix sum and calculate each dp[n][r] in O(1) giving the final complexity O(n*k).
+	the whole idea is given on Brilliant.org 
+	
+
+Ballot problem: https://en.wikipedia.org/wiki/Bertrand%27s_ballot_theorem (very useful)
+check Andre's reflection method(very nice).
+Problem : https://acm.timus.ru/problem.aspx?space=1&num=1619

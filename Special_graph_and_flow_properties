@@ -1,0 +1,14 @@
+The largest antichain in a DAG can be found by Dilwort's theorem along with Konig's theorem
+Link: https://en.wikipedia.org/wiki/Dilworth%27s_theorem
+Algorithm for finding largest antichain:
+1) Make two partitions A(1 to n) and B(1 to n).
+2) Make undirected edge from (a of A) to (b of B) iff a<b in DAG.
+3) Find the maximum matching m in the above bipartite graph.
+4) Largest antichain for above graph= n-m. 
+
+
+Maximum independent set in any Graph G(V,E)=|V|-(minimum vertex cover of graph).
+
+Minimum vertex cover=minimal vertex set of minimum cardinality such that for every edge (u,v), atleast one of u,v is present in the set.
+
+In any bipartite graph, the number of edges in a Maximum matching equals the number of vertices in a minimum vertex cover.(very intuitive if thinked properly)

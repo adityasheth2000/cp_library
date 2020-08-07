@@ -1,0 +1,7 @@
+The largest antichain in a DAG can be found by Dilwort's theorem along with Konig's theorem
+Link: https://en.wikipedia.org/wiki/Dilworth%27s_theorem
+Algorithm for finding largest antichain:
+1) Make two partitions A(1 to n) and B(1 to n).
+2) Make undirected edge from (a of A) to (b of B) iff a<b in DAG.
+3) Find the maximum matching m in the above bipartite graph.
+4) Largest antichain for above graph= n-m.                   

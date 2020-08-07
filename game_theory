@@ -1,0 +1,49 @@
+introduction:
+https://www.youtube.com/watch?v=HdRgnzRk56Q
+
+now start with small problems with basic dp: (do how much ever you think you can do)
+https://www.hackerrank.com/contests/5-days-of-game-theory/challenges
+
+good problems: (make sure to do all)
+https://www.codechef.com/COOK100A/problems/ABGAME (easy)
+https://codeforces.com/problemset/problem/812/E
+https://codeforces.com/contest/255/problem/E
+https://www.codechef.com/problems/ADAPWNS (stair case nim)
+https://codeforces.com/problemset/problem/317/D
+https://codeforces.com/problemset/problem/850/C
+https://www.codechef.com/problems/AMR16J (one of the best)
+
+simple yet beautiful:
+https://www.codechef.com/ACM15CHN/problems/CHN07
+
+Staircase nim: https://codeforces.com/blog/entry/44651
+
+How to check if our classification of winning and losing state is correct:
+1) Final position should be losing position.
+2) In winning position it's possible to go to atleast one losing position.
+3)In losing position we are forced to go to winning position.
+
+
+Minimum Excludant(MEX):
+1) Operation performed on a set.
+2) returns the smallest number not present in the set.
+
+Grundy numbers:
+Grundy is the MEX of a set of moves that we can play.
+Defines the entire game state.
+Calculated as follows:
+	1)take the Mex of set.
+	2)If set is empty: mex(null set)=0
+		Grundy(losing condition=0
+	3)Grundy(x)=MEX({Grundy of reachable states}).
+		if a reachable state in (3) consist of multiple piles,to find grundy of that reachable state,
+		take xor of grundy of each pile.
+	4) a set of piles can be converted to a single pile with the value as the xor of the set
+	
+
+How to find if a state is winning state or losing state:
+
+1) Take Xor of all the Grundy(states reachable from current state).
+2) if Grundy is 0, losing state, else winning state.
+*/
+
