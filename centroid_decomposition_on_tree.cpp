@@ -16,16 +16,16 @@ void dfs(int u, int par)
 	}
 }
 
-int centroid(int u, int par)
+int centroid(int k, int parent)
 {
-	for(auto &it:g[u])
+	for(auto it:g[k])
 	{
-		if(it == par)
+		if(it==parent)
 			continue;
-		if(subtree[u] > (nodes >> 1))
-			return centroid(u, it);
+		if(subtree[it]>(nodes>>1))
+			return centroid(it,k);
 	}
-	return u;
+	return k;
 }
 
 void decompose(int u, int par)
@@ -40,6 +40,11 @@ void decompose(int u, int par)
 		decompose(it, node);
 	}
 }
+
+
+/*
+Properties of Centroid Tree(VERY IMP): https://www.quora.com/q/threadsiiithyderabad/Centroid-Decomposition-of-a-Tree 
+*/
 
 //Problem 1: https://codeforces.com/contest/322/problem/E
 //Solution 1: https://codeforces.com/contest/322/submission/45791742

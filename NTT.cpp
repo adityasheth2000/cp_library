@@ -74,3 +74,9 @@ template<typename S> struct NTT {
 		doDFT(newA, true);
 	}
 };
+
+/*
+
+IPC CAMP 2020 tutorial: https://youtu.be/4yvQRQwa3fY?list=PLQXZIFwMtjoySv4d_FuRtbnfG3lCdf_WT
+Read abt primitive roots once if in doubt.
+*/

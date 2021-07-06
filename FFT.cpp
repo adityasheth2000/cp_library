@@ -38,7 +38,7 @@ template<typename S, typename T> struct FFT //Use typename S as long long int, T
 		vector<cmplx> newA(a.begin(), a.end());
 		vector<cmplx> newB(b.begin(), b.end());
 		S n = 1;
-		while(n < (a.size() + b.size())) n <<= 1;
+		while(n < (int)(a.size() + b.size())) n <<= 1;
 		newA.resize(n);
 		newB.resize(n); 
 		doDFT(newA, false);

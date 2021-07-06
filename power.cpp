@@ -1,4 +1,4 @@
-ll poww(long long a, long long n, long long m)
+long long poww(long long a, long long n, long long m)
 {
         long long ans = 1;
         long long mul = a;

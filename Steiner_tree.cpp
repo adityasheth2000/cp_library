@@ -29,7 +29,7 @@ for(int mask=1;mask<(1<<k);mask++)
 			}
 		}
 	}
-}	
+} 	
 /*
 Submission code: https://codeforces.com/gym/101908/submission/68161045
 */

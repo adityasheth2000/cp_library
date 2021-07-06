@@ -18,9 +18,9 @@ struct SegTree
 	void init(int n)
 	{
 		N = n;
-		st.resize(4 * N + 5);
-		cLazy.assign(4 * N + 5, false);
-		lazy.assign(4 * N + 5, 0);
+		st=vector<dat>(4 * N + 5);
+		cLazy=vector<bool>(4 * N + 5, false);
+		lazy=vector<int>(4 * N + 5, 0);
 	}
 
 	//Write reqd merge functions

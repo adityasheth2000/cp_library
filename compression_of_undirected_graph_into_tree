@@ -1,4 +1,4 @@
-    Idea is to compress two way connected components of an undirected connected graph into a tree. So all the set of nodes that have two or more ways to reach one from another is compressed to one node.
+Idea is to compress two way connected components of an undirected connected graph into a tree. So all the set of nodes that have two or more ways to reach one from another is compressed to one node.
 
 Algorithm:
 1) Make a recursion function to create a directed graph:
