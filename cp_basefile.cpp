@@ -1,11 +1,85 @@
-#pragma GCC optimize("O3")
-#pragma GCC target("sse4")
-// #pragma GCC optimize("Ofast")  
-// #pragma GCC target("avx,avx2,fma") 
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const double PI=acos(-1.0);
+
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::vector<T> & vec);
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::set<T> & vec);
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::unordered_set<T> & vec);
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::multiset<T> & vec);
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::unordered_multiset<T> & vec);
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::pair<T1,T2> & p);
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::map<T1,T2> & p);
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::unordered_map<T1,T2> & p);
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::vector<T> & vec){
+    os<<"{";
+    for(auto elem : vec)
+        os<<elem<<",";
+    os<<"}";
+    return os;
+}
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::set<T> & vec){
+    os<<"{";
+    for(auto elem : vec)
+        os<<elem<<",";
+    os<<"}";
+    return os;
+}
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::unordered_set<T> & vec){
+    os<<"{";
+    for(auto elem : vec)
+        os<<elem<<",";
+    os<<"}";
+    return os;
+}
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::multiset<T> & vec){
+    os<<"{";
+    for(auto elem : vec)
+        os<<elem<<",";
+    os<<"}";
+    return os;
+}
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::unordered_multiset<T> & vec){
+    os<<"{";
+    for(auto elem : vec)
+        os<<elem<<",";
+    os<<"}";
+    return os;
+}
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::pair<T1,T2> & p){
+    os<<"{"<<p.first<<","<<p.second<<"}";
+    return os;
+}
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::map<T1,T2> & p){
+    os<<"{";
+    for(auto x: p)
+        os<<x.first<<"->"<<x.second<<", ";
+    os<<"}";
+    return os;
+}
+template<typename T1, typename T2>
+std::ostream & operator << (std::ostream & os, const std::unordered_map<T1,T2> & p){
+    os<<"{";
+    for(auto x: p)
+        os<<x.first<<"->"<<x.second<<", ";
+    os<<"}";
+    return os;
+}
 #define t1(x)             cerr<<#x<<"="<<x<<endl
 #define t2(x, y)          cerr<<#x<<"="<<x<<" "<<#y<<"="<<y<<endl
 #define t3(x, y, z)       cerr<<#x<<"=" <<x<<" "<<#y<<"="<<y<<" "<<#z<<"="<<z<<endl
@@ -17,10 +91,10 @@ const double PI=acos(-1.0);
 #define __ freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
 #define fastio() ios::sync_with_stdio(0);cin.tie(0)
 #define MEMS(x,t) memset(x,t,sizeof(x));
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 /*-------------------------------------------------------------------------------------------------------------------------------------*/
 // #define MOD 1000000007
-#define endl "\n" 
+#define endl "\n"
 #define int long long
 #define inf 1e18
 #define ld long double
@@ -28,6 +102,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 signed main()
 {
-	fastio();
-	
+    fastio();
+    
 }
+
