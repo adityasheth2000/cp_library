@@ -33,6 +33,7 @@ void decompose(int u, int par)
 	nodes = 0;
 	dfs(u, u);
 	int node = centroid(u, u);
+	//do something
 	parentcentroid[node] = par;
 	for(auto &it:g[node])
 	{

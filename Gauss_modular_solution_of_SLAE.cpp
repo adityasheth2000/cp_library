@@ -40,9 +40,8 @@ int gauss (vector<vector<int>> &a,vector<int> &ans) {
                 int c = (a[i][col]*inv(a[row][col]))%MOD;
                 for (int j=col; j<=m; ++j){
                 	a[i][j] -= (a[row][j] * c)%MOD;
-                	a[i][j] %= MOD;
-                	a[i][j] += MOD;
-                	a[i][j] %= MOD;
+                	if(a[i][j]<0)
+                        a[i][j] += MOD;
                 }
             }
         ++row;

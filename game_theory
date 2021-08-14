@@ -43,7 +43,8 @@ Calculated as follows:
 
 How to find if a state is winning state or losing state:
 
-1) Take Xor of all the Grundy(states reachable from current state).
+1) If there are sub-games, we can take xor sum of grundy numbers of subgames and 
+	the xorsum we get is the grundy number of overall game.
 2) if Grundy is 0, losing state, else winning state.
 */
 

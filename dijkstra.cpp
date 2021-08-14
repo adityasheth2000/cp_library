@@ -1,8 +1,8 @@
 int dijkstra(int source,int destination)
 {
 	int n=adj.size();
-	int var[n];
-	int fix[n];
+	vector<int> var(n);
+	vector<int> fix(n);
 	for(int i=0;i<n;i++)
 	{
 		var[i]=inf;
