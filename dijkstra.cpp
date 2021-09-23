@@ -1,4 +1,4 @@
-int dijkstra(int source,int destination)
+vector<int> dijkstra(int source,int destination)
 {
 	int n=adj.size();
 	vector<int> var(n);
@@ -7,7 +7,6 @@ int dijkstra(int source,int destination)
 	{
 		var[i]=inf;
 	}
-	memset(fix,-1,sizeof(fix));
 	set<pair<int,int>> s;
 	s.insert({0,source});
 	fix[source]=0;
@@ -27,5 +26,5 @@ int dijkstra(int source,int destination)
 			}
 		}
 	}
-	return fix[destination];
+	return fix;
 }
