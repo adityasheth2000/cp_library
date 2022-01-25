@@ -1,8 +1,26 @@
-int find_parent(int parent[],int a){
-    if(parent[a]>=0)return parent[a]=find_parent(parent,parent[a]);else return a;
+struct DSU
+{
+    int parent = -1;
+};
+int find_parent(vector<DSU> &ds, int v)
+{
+    while (ds[v].parent >= 0)
+        v = ds[v].parent;
+    return v;
 }
-void merge_sets(int parent[],int a,int b){
-    int p1=find_parent(parent,a),p2=find_parent(parent,b);if(p1==p2)return;
-    if(abs(parent[p1])<abs(parent[p2]))swap(p1,p2);
-    parent[p1]-=abs(parent[p2]);parent[p2]=p1;
+void merge_sets(vector<DSU> &ds, int a, int b)
+{
+    int p1 = find_parent(ds, a);
+    int p2 = find_parent(ds, b);
+    if (p1 == p2)
+    {
+        return;
+    }
+    if (abs(ds[p1].parent) < abs(ds[p2].parent))
+    {
+        swap(p1, p2);
+        swap(a, b);
+    }
+    ds[p1].parent -= abs(ds[p2].parent);
+    ds[p2].parent = p1;
 }
