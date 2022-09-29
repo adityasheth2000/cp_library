@@ -27,6 +27,8 @@ struct BIT
 	}
 	int rsum(int l, int r)
 	{
+		if(l > r)
+			return 0;
 		return pref(r) - pref(l - 1);
 	}	
 };

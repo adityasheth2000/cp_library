@@ -1,7 +1,7 @@
 template<typename S, typename T> struct FFT //Use typename S as long long int, T as the data type of input vector and result vector
 {
-	using cmplx = complex<double>; // Can use long double for more precision but it will increase constant factor.
-	const double PI = acos(-1.0); 
+	using cmplx = complex<long double>; // Can use long double for more precision but it will increase constant factor.
+	const long double PI = acos(-1.0); 
 	void doDFT(vector<cmplx> &a, bool toInvert = false) 
 	{
 		S n = a.size();
@@ -14,7 +14,7 @@ template<typename S, typename T> struct FFT //Use typename S as long long int, T
 		}
 		for(S length = 2; length <= n; (length <<= 1)) 
 		{
-			double angle = ((2.0 * PI) / length) * (toInvert ? -1 : 1); 	
+			long double angle = ((2.0 * PI) / length) * (toInvert ? -1 : 1); 	
 			cmplx omegaLen(cos(angle), sin(angle));
 			for(S i = 0; i < n; i += length) 
 			{
@@ -51,7 +51,7 @@ template<typename S, typename T> struct FFT //Use typename S as long long int, T
 		vector<T> result(n);
 		for(S i = 0; i < n; i ++) 
 		{
-			result[i] = round(newA[i].real());//is T is floating point, don't round it.	
+			result[i] = roundl(newA[i].real());//is T is floating point, don't round it.	
 		}
 		return result;
 	}
